@@ -12,10 +12,9 @@ class Program
         StatMechanics mechanics = new StatMechanics();
         Console.WriteLine(mechanics.Modifiers(Jafaru.attributes.Strength));
 
-        for (int i = 1; i <= 20; i++)
-        {
-            Console.WriteLine(mechanics.D_8());
-        }
+        Character Miniya = new Character();
+        Miniya.attributes.Strength = 12;
+
 
     }
 }
