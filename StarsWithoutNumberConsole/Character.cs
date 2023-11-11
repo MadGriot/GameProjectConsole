@@ -1,6 +1,6 @@
 ﻿namespace CharacterLibrary
 {
-    public struct Attributes
+    public class Attributes
     {
         public double Strength;
         public double Dexterity;
@@ -11,8 +11,9 @@
     }
 
 
-    struct Skills
+    public class Skills
     {
+
         public int Administer;
         public int Connect;
         public int Exert;
@@ -24,26 +25,29 @@
         public int Perform;
         public int Pilot;
         public int Program;
-        public int Martial_Arts;
-        public int Marksmanship;
         public int Sneak;
-        public int Melee_Weapons;
         public int Survive;
         public int Persuasion;
         public int Trade;
         public int Work;
-    }
+        public class Combat
+        {
+            public int Martial_Arts;
+            public int Marksmanship;
+            public int Melee_Weapons;
+        }
 
-    struct Phychic_Skills
-    {
-        public int Biopsionics;
-        public int Metapsionics;
-        public int Precognition;
-        public int Telekinesis;
-        public int Telepathy;
-        public int Teleportation;
+        public class Phychic
+        {
+            public int Biopsionics;
+            public int Metapsionics;
+            public int Precognition;
+            public int Telekinesis;
+            public int Telepathy;
+            public int Teleportation;
+        }
     }
-    enum Background
+    public enum Background
     {
         Barbarian,
         Clergy,
@@ -66,12 +70,21 @@
         Vagabond,
         Worker,
     }
+
+    public enum Class
+    {
+        Expert,
+        Psychic,
+        Warrior,
+    }
     public class Character
     {
         public Attributes attributes = new Attributes();
-        Skills character_skills = new Skills();
-        Phychic_Skills phychic_skills = new Phychic_Skills();
-        Background background;
+        public Skills character_skills = new Skills();
+        public Skills.Combat combat_skills = new Skills.Combat();
+        public Skills.Phychic phychic_skills = new Skills.Phychic();
+        public Background background;
+        public Class character_class;
 
     }
 }
