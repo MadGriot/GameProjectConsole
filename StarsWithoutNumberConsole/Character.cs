@@ -1,7 +1,13 @@
-﻿namespace CharacterLibrary
+﻿using System.Net.Security;
+
+namespace CharacterLibrary
 {
     public class Attributes
     {
+        public double hit_points;
+        public int level;
+        public double attack_bonus;
+        public double armor_class;
         public double Strength;
         public double Dexterity;
         public double Constitution;
@@ -79,6 +85,7 @@
     }
     public class Character
     {
+        public string name;
         public Attributes attributes = new Attributes();
         public Skills character_skills = new Skills();
         public Skills.Combat combat_skills = new Skills.Combat();

@@ -6,10 +6,12 @@ namespace StatMechanicsLib
     internal class StatMechanics
     {
         Random rnd = new Random();
+
+
         public double Modifiers(double attribute)
         {
             double modifier = 0.0;
-            if (attribute == 3)
+            if (attribute <= 3)
                 modifier = -2;
             else if (attribute > 3 && attribute < 8)
                 modifier = -1;
@@ -169,6 +171,27 @@ namespace StatMechanicsLib
                     skills.Work += 1;
                     skills.Exert += 1;
                     break;
+            }
+
+        }
+        public void starting_level(Attributes attributes, Class character_class)
+        {
+            if (attributes.level == 0)
+            {
+                attributes.level += 1;
+                attributes.hit_points += 3;
+                double con_modifier = Modifiers(attributes.Constitution);
+                if (con_modifier > 0)
+                    attributes.hit_points += con_modifier;
+
+                attributes.attack_bonus = attributes.level / 2;
+
+                switch (character_class)
+                {
+                    case Class.Warrior:
+                        attributes.hit_points += 2;
+                        break;
+                }
             }
         }
     }
