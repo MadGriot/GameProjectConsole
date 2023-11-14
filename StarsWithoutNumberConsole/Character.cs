@@ -7,6 +7,9 @@ namespace CharacterLibrary
         public int level;
         public double attack_bonus;
         public double armor_class;
+        //reset initiative to zero when combat ends!!!
+        public double initiative;
+        //
         public double Strength;
         public double Dexterity;
         public double Constitution;

@@ -1,4 +1,5 @@
 ﻿using CharacterLibrary;
+using CombatMechanicsLib;
 
 namespace StatMechanicsLib
 {
@@ -6,7 +7,7 @@ namespace StatMechanicsLib
     internal class StatMechanics
     {
         Random rnd = new Random();
-
+        CombatMechanicsLib.CombatMechanics combatMechanics = new CombatMechanics();
 
         public double Modifiers(double attribute)
         {
@@ -174,6 +175,16 @@ namespace StatMechanicsLib
             }
 
         }
+        public void Bonus_Skills(Skills skills, Skills.Combat combat_skills, Focus focus)
+        {
+            if (focus != null && skills != null) 
+            {
+                if (focus.Alert >= 1)
+                    skills.Notice += 1;
+                else if (focus.Armsman >= 1)
+                    combat_skills.Melee_Weapons += 1;
+            }
+        }
         public void starting_level(Attributes attributes, Class character_class)
         {
             if (attributes.level == 0)
@@ -192,6 +203,26 @@ namespace StatMechanicsLib
                         attributes.hit_points += 2;
                         break;
                 }
+            }
+        }
+
+        public void Focus_Check(Focus focus, Character character)
+        {
+            if (focus.Alert == 1)
+            {
+                double initiative_roll = combatMechanics.initiative(character.attributes);
+                double initiative_roll2 = combatMechanics.initiative(character.attributes);
+
+                double final_result = (initiative_roll > initiative_roll2) ? initiative_roll : initiative_roll2;
+                character.attributes.initiative = final_result;
+            }
+            else if (focus.Alert == 2)
+            {
+                double initiative_roll = combatMechanics.initiative(character.attributes);
+                double initiative_roll2 = combatMechanics.initiative(character.attributes);
+
+                double final_result = (initiative_roll > initiative_roll2) ? initiative_roll : initiative_roll2;
+                character.attributes.initiative = final_result + 3;
             }
         }
     }
