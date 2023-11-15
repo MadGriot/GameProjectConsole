@@ -201,8 +201,39 @@ namespace StatMechanicsLib
                 {
                     case Class.Warrior:
                         attributes.hit_points += 2;
+                        attributes.attack_bonus += 0.5;
                         break;
                 }
+            }
+        }
+
+        public void level_up(Attributes attributes, Class character_class, Skills skills)
+        {
+            attributes.level += 1;
+            switch (character_class)
+            {
+                case Class.Warrior:
+                    attributes.hit_points += 9;
+                    attributes.hit_points += Modifiers(attributes.Constitution) * 3;
+                    attributes.attack_bonus += 1;
+                    skills.skill_points += 3;
+                    break;
+
+                case Class.Expert:
+                    attributes.hit_points += 6;
+                    attributes.hit_points += Modifiers(attributes.Constitution);
+                    attributes.attack_bonus = attributes.level / 2;
+                    skills.skill_points += 3;
+                    skills.bonus_skill_points_expert += 1;
+                    break;
+
+                case Class.Psychic:
+                    attributes.hit_points += 6;
+                    attributes.hit_points += Modifiers(attributes.Constitution);
+                    attributes.attack_bonus = attributes.level / 2;
+                    skills.skill_points += 2;
+                    skills.bonus_skill_points_phychic += 1;
+                    break;
             }
         }
 

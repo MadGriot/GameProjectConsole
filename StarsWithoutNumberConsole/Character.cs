@@ -4,6 +4,7 @@ namespace CharacterLibrary
     public class Attributes
     {
         public double hit_points;
+        public double effort;
         public int level;
         public double attack_bonus;
         public double armor_class;
@@ -21,7 +22,9 @@ namespace CharacterLibrary
 
     public class Skills
     {
-
+        public int skill_points;
+        public int bonus_skill_points_expert;
+        public int bonus_skill_points_phychic;
         public int Administer = -1;
         public int Connect = -1;
         public int Exert = -1;
